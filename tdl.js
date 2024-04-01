@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
 //Heading:
@@ -39,9 +40,11 @@ async function todosList(todos) {
             todos = [...newTodos, addTodo.todo];
             console.log(todos);
         }
+        // View Todo's that you want to view.
         if (answer.select == "view") {
             console.log(todos);
         }
+        // Delete Todo's that you want to delete.
         if (answer.select == "delete") {
             let deleteTodo = await inquirer.prompt({
                 type: "list",
@@ -53,11 +56,11 @@ async function todosList(todos) {
             todos = [...newTodos];
             console.log(todos);
         }
+        // If you want to exit the app.
         if (answer.select == "exit") {
             console.log(chalk.bgYellowBright.bold("THANK YOU FOR USING THE APP!! HAVE A NICE DAY!!!."));
             break;
         }
-        // If you want to exit the app.
     } while (true);
 }
 todosList(todos);
